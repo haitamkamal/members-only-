@@ -2,7 +2,7 @@ const { Router } = require("express");
 const authorRouter = Router();
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");;
 
 authorRouter.get("/",(req,res)=>{
   res.render("home");

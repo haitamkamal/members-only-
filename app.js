@@ -7,7 +7,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 
-app.use("/",authorRouter);
+app.use("/",authorRouter)
 
 
 const PORT = 3000;
