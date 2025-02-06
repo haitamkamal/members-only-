@@ -1,8 +1,9 @@
 const { Router } = require("express");
-const authorRouter = Router();
 const passport = require("passport");
-const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require("bcryptjs");;
+const { addUser } = require("../db/query ");
+const { checkUser } = require("../db/query ")
+const authorRouter = Router();
+
 
 authorRouter.get("/",(req,res)=>{
   res.render("home");
@@ -11,15 +12,21 @@ authorRouter.get("/",(req,res)=>{
 authorRouter.get("/log-in",(req,res)=>{
   res.render("loginForm")
 })
-
 authorRouter.post(
-  "log-in",
-  passport.authenticate("local",{
-    successRedirect :"/",
-    failureRedirect:"/"
+  "/log-in",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/loginUser",  // This will redirect the user to the login form on failure
   })
-)
-authorRouter.get("/sing-up",(req,res)=>{
-  res.render("SingupForm");
+);
+authorRouter.get("/loginUser",(req,res)=>{
+  res.render("loginUser");
 })
-module.exports = authorRouter;
+authorRouter.get("/sing-up",(req,res)=>{
+  res.render("singupForm")
+})
+authorRouter.post("/sing-up",addUser)
+
+
+
+module.exports = authorRouter;  

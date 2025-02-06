@@ -6,16 +6,17 @@
   <title>Login</title>
 </head>
 <body>
-    <form action="/log-in" method="post">
-      <label for="email" >Email</label><br>
-      <input type="email" name="email" placeholder="Email" id="email"> <br><br>
+  <form action="/log-in" method="post">
+    <label for="email">Email:</label><br>
+    <input type="text" name="email" placeholder="Email" id="email"><br><br>
 
-      <label for="password" >password</label><br>
-      <input type="password" name="password" placeholder="password" id="email"><br><br>
+    <label for="password">Password:</label><br>
+    <input type="password" name="password" placeholder="Password" id="password"><br><br>
 
-      <button>login</button>
+    <button>Login</button>
+  </form>
 
-      <p>Not registered yet?</p> <button><a href="/sing-up">Singup</a></button>
-    </form>
+  <p>Not registered yet?</p>
+  <a href="/sing-up">Sign Up</a>
 </body>
 </html>
