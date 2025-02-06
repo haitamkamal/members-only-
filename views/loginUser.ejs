@@ -3,9 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <title>User</title>
 </head>
 <body>
-  <p>hello im login</p>
+    <%- include('./partials/sidebar') %>
+    <% if (locals.user) {%>
+    <h1>Hello, <%= user.first_name %> <%= user.last_name %> </h1>
+    <p>Explore the latest anonymous posts from our community</p>
+  <% } else { %>
+    <%}%>
+    <button><a href="/Create-new-Post">Ceate new post</a></button>
+    <button>view Posts</button>
 </body>
 </html>

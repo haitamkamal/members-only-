@@ -4,22 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
 </head>
-<body>
-  <form action="/sing-up" method="post">
-    <label for="first_name">First name</label>
-    <input type="text" name="first_name" id="first_name"><br>
+<body class="has-background-white-ter">
+  <div class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center" 
+     style="height: 100vh;">
+     <div class="box has-background-grey-lighter" style="max-width: 350px; width: 100%;"> 
 
-    <label for="last_name">Last name</label>
-    <input type="text" name="last_name" id="last_name"><br>
+        <h1 class="title is-1 has-text-centered">SIGN UP</h1>
 
-    <label for="email">Email:</label>
-    <input type="email" name="email" placeholder="Email" id="email"><br>
+      <form action="/sing-up" method="post">
+        <div class="field">
+          <label for="first_name" class="label">First name</label>
+          <div class="control">
+            <input type="text" name="first_name" id="first_name" class="input">
+          </div>
+        </div>
 
-    <label for="password">Password:</label>
-    <input type="password" name="password" placeholder="Password" id="password"><br><br>
+        <div class="field">
+          <label for="last_name" class="label">Last name</label>
+          <div class="control">
+            <input type="text" name="last_name" id="last_name" class="input">
+          </div>
+        </div>
 
-    <button type="submit">Sing up</button>
-  </form>
+        <div class="field">
+          <label for="email" class="label">Email:</label>
+          <div class="control">
+            <input type="email" name="email" id="email" class="input">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="password" class="label">Password:</label>
+          <div class="control">
+            <input type="password" name="password" id="password" class="input">
+          </div>
+        </div>
+
+        <button type="submit" class="button is-dark is-fullwidth">Sign up</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

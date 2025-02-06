@@ -52,8 +52,6 @@ async function addUser(req,res,next) {
   )
 );
 
-
-
  passport.serializeUser((user, done) => {
   console.log("Serializing user:", user);
   done(null, user.id); // Ensure `id` exists in the user object
@@ -77,8 +75,9 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-  
+
 
 module.exports={
   addUser,
+  addUser
 }
