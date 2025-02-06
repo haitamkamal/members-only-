@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const passport = require("passport");
 const { addUser } = require("../db/query ");
-const { checkUser } = require("../db/query ")
 const authorRouter = Router();
 
 
@@ -15,11 +14,11 @@ authorRouter.get("/log-in",(req,res)=>{
 authorRouter.post(
   "/log-in",
   passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/loginUser",  // This will redirect the user to the login form on failure
+    successRedirect: "/login-User",
+    failureRedirect: "/",  // This will redirect the user to the login form on failure
   })
 );
-authorRouter.get("/loginUser",(req,res)=>{
+authorRouter.get("/login-User",(req,res)=>{
   res.render("loginUser");
 })
 authorRouter.get("/sing-up",(req,res)=>{
