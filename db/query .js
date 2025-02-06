@@ -2,14 +2,17 @@ const { Passport } = require("passport");
 const pool = require("./pool");
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require("bcryptjs");
+
 
 async function addUser(req,res,next) {
   try{
+    const hashedPassword = await bcrypt.hash(req.body.password,10)
   await pool.query("INSERT INTO member (email,first_name,last_name,password) VALUES ($1,$2,$3,$4)",[
     req.body.email,
     req.body.first_name,
     req.body.last_name,
-    req.body.password
+    hashedPassword
   ])
    res.redirect('/');
   }catch(err){
@@ -33,8 +36,8 @@ async function addUser(req,res,next) {
         }
 
         console.log("User found:", user);
-
-        if (user.password !== (password)) {
+        const match = await bcrypt.compare(password,user.password)
+        if (!match) {
           console.log("Incorrect password!");
           return done(null, false, { message: "Incorrect password" });
         }

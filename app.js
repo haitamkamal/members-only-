@@ -34,7 +34,5 @@ app.set("view engine", "ejs");
 const authorRouter = require("./routes/authorRouter.js");
 app.use("/", authorRouter);
 
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log('Server listen to port ${PORT}');
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
