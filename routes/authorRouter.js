@@ -1,8 +1,9 @@
 const { Router } = require("express");
 const passport = require("passport");
-const { addUser } = require("../db/query ");
-const { addPost } = require("../db/query ")
+const authorController = require('../controller/authorController')
+const { addUser, addMessage , displayMessage} = require("../db/query ");
 const authorRouter = Router();
+
 
 authorRouter.get("/",(req,res)=>{
   res.render("home");
@@ -16,7 +17,7 @@ authorRouter.post(
   "/log-in",
   passport.authenticate("local", {
     successRedirect: "/login-User",
-    failureRedirect: "/",  
+    failureRedirect: "/",   
   })
 );
 
@@ -41,5 +42,9 @@ authorRouter.get("/log-out",(req,res,next)=>{
 authorRouter.get("/Create-new-Post",(req,res)=>{
   res.render("createNewPostForm")
 })
+authorRouter.post("/Create-new-Post",addMessage);
+
+
+authorRouter.get("/view-post/messages", authorController.renderIndex);
 
 module.exports = authorRouter;  

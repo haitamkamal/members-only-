@@ -75,9 +75,21 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
+async function addMessage(req,res) {
+  await pool.query("INSERT INTO messages (title,content) VALUES ($1,$2)",[
+    req.body.title,
+    req.body.content
+  ])
+  res.redirect("/login-User");
+}
 
+async function displayMessage(req, res) {
+  const result = await pool.query("SELECT * FROM messages ORDER BY created_at DESC");
+   return result.rows;
+}
 
 module.exports={
   addUser,
-  addUser
+  addMessage,
+  displayMessage
 }
