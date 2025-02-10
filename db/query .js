@@ -85,11 +85,16 @@ async function addMessage(req,res) {
 
 async function displayMessage(req, res) {
   const result = await pool.query("SELECT * FROM messages ORDER BY created_at DESC");
-   return result.rows;
+  return result.rows; 
+}
+
+async function deleteMsg(msgId) {
+ await pool.query('DELETE FROM messages WHERE id = $1',[msgId])
 }
 
 module.exports={
   addUser,
   addMessage,
-  displayMessage
+  displayMessage,
+  deleteMsg
 }

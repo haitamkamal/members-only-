@@ -8,8 +8,16 @@ async function renderIndex(req, res) {
   res.render('viewPost', { categories, title, content });
 }
 
+async function deleteMsg(req, res) {
+  const msgId = parseInt(req.params.id, 10); // ✅ Get ID from URL params
+  if (!isNaN(msgId)) {
+    await db.deleteMsg(msgId);
+  }
+  res.redirect("/view-post/messages"); // ✅ Ensure correct redirect route
+}
 
 
 module.exports = {
   renderIndex,
+  deleteMsg
 };

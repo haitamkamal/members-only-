@@ -7,20 +7,25 @@
 </head>
 <body>
   <h1>Messages</h1>
-
-  <% if (categories && categories.length > 0) { %>
-    <ul>
-      <% categories.forEach(function(message) { %>
-        <li>
-          <h2><%= message.title %></h2>
-          <p><%= message.content %></p>
-          <p><strong>Created at:</strong> <%= message.created_at %></p>
-        </li>
-      <% }) %>
-    </ul>
-  <% } else { %>
-    <p>No messages found.</p>
-  <% } %>
+  
+      <% if (categories && categories.length > 0) { %>
+        <ul>
+          <% categories.forEach(function(message) { %>
+            <li>
+              <h2><%= message.title %></h2>
+              <p><%= message.content %></p>
+              <p><strong>Created at:</strong> <%= message.created_at %></p>
+              <form action="/deleteMsg/<%= message.id %>" method="post">
+                <button type="submit">delete</button>
+              </form>
+              
+            </li>
+          <% }) %>
+        </ul>
+      <% } else { %>
+        <p>No messages found.</p>
+      <% } %>
+    
 
 </body>
 </html>

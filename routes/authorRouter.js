@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const passport = require("passport");
 const authorController = require('../controller/authorController')
-const { addUser, addMessage , displayMessage} = require("../db/query ");
+const { addUser, addMessage , displayMessage, deleteMsg} = require("../db/query ");
 const authorRouter = Router();
 
 
@@ -44,7 +44,9 @@ authorRouter.get("/Create-new-Post",(req,res)=>{
 })
 authorRouter.post("/Create-new-Post",addMessage);
 
-
 authorRouter.get("/view-post/messages", authorController.renderIndex);
+
+
+authorRouter.post("/deleteMsg/:id",authorController.deleteMsg);
 
 module.exports = authorRouter;  

@@ -7,13 +7,20 @@
     <title>User</title>
 </head>
 <body>
-    <%- include('./partials/sidebar') %>
-    <% if (locals.user) {%>
-    <h1>Hello, <%= user.first_name %> <%= user.last_name %> </h1>
-    <p>Explore the latest anonymous posts from our community</p>
-  <% } else { %>
-    <%}%>
-    <button><a href="/Create-new-Post">Ceate new post</a></button>
-    <button><a href="/view-post/Messages">View Posts</a></button>
+<div class="is is-flex is-justify-content-space-evenly		 ">
+    <div>
+      <%- include('./partials/sidebar') %>
+    </div>  
+    <div>
+        <% if (locals.user) {%>
+        <h1>Hello, <%= user.first_name %> <%= user.last_name %> </h1>
+        <p>Explore the latest anonymous posts from our community</p>
+      <% } else { %>
+        <%}%>
+
+        <button><a href="/Create-new-Post">Ceate new post</a></button>
+        <button><a href="/view-post/Messages">View Posts</a></button>
+    </div>
+</div>
 </body>
 </html>
