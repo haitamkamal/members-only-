@@ -4,28 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>View Messages</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <style>
+    /* Ensure the background color covers the entire page */
+    html, body {
+      height: 100%;
+      background-color: #f5f5f5; /* Same as has-background-grey-lighter */
+    }
+  </style>
 </head>
 <body>
-  <h1>Messages</h1>
-  
-      <% if (categories && categories.length > 0) { %>
-        <ul>
-          <% categories.forEach(function(message) { %>
-            <li>
-              <h2><%= message.title %></h2>
+
+  <div class="container">
+    <h1 class="title is-2 has-text-centered">Messages</h1>
+    
+    <% if (categories && categories.length > 0) { %>
+      <div class="columns is-multiline">
+        <% categories.forEach(function(message) { %>
+          <div class="column is-12 is-half-tablet is-one-third-desktop">
+            <div class="box has-background-white">
+              <h2 class="title is-4"><%= message.title %></h2>
               <p><%= message.content %></p>
               <p><strong>Created at:</strong> <%= message.created_at %></p>
               <form action="/deleteMsg/<%= message.id %>" method="post">
-                <button type="submit">delete</button>
+                <button type="submit" class="button is-danger is-fullwidth">Delete</button>
               </form>
-              
-            </li>
-          <% }) %>
-        </ul>
-      <% } else { %>
-        <p>No messages found.</p>
-      <% } %>
-    
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <p class="has-text-centered">No messages found.</p>
+    <% } %>
+  </div>
 
 </body>
 </html>

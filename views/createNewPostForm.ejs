@@ -4,17 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <style>
+    /* Set the full height for the html and body */
+    html, body {
+      height: 100%;
+    }
+       .tall-input {
+      height: 100px; /* Make the input taller */
+    }
+  </style>
 </head>
-<body>
-    <form action="/Create-new-Post" method="post">
-      <label for="title">Title</label><br><br>
-      <input type="text" name="title" id="title" ><br><br>
+<body class="has-background-grey-darker">
 
-      <label for="content">Content</label><br><br>
-      <input type="text" name="content" id="content"><br><br>
+    <div class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center" style="height: 80vh;">
+      
+        <div class="box has-background-grey	" style="max-width: 250px; width: 450%;">
 
-      <button type="submit">Send</button>
-    </form>
+          <form action="/Create-new-Post" method="post">
+            <label for="title" class="title is-1 has-text-centered">Title</label><br><br>
+            <input type="text" name="title" id="title" class="input"><br><br>
+
+            <label for="content" class="title is-1 has-text-centered">Content</label><br><br>
+            <textarea name="content" id="content" class="textarea" rows="5"></textarea><br>
+            
+
+            <button type="submit" class="button is-dark">Send</button>
+          </form>
+        </div>  
+    </div>
+
 </body>
 </html>
