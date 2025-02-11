@@ -9,11 +9,11 @@ async function renderIndex(req, res) {
 }
 
 async function deleteMsg(req, res) {
-  const msgId = parseInt(req.params.id, 10); // ✅ Get ID from URL params
+  const msgId = parseInt(req.params.id, 10);
   if (!isNaN(msgId)) {
     await db.deleteMsg(msgId);
   }
-  res.redirect("/view-post/messages"); // ✅ Ensure correct redirect route
+  res.redirect("/view-post/messages"); 
 }
 
 
